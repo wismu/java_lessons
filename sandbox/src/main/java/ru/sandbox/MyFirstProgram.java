@@ -4,31 +4,17 @@ public class MyFirstProgram {
 
   public static void main(String[] args) {
 
-    hello("test");
+    hello("world");
     hello("igoryan");
 
-    double l = 5;
-    System.out.println("Ploshad kvadrata so storonoi " + l + " = " + area(l));
+    Square s = new Square(5);
+    System.out.println("Площадь квадрата со стороной " + s.l + " = " + s.area());
 
-    double a = 4;
-    double b = 8;
-
-    System.out.println("Площадь прямоугольника со сторонами " + a + " и " + b + " = " + area(a,b));
+    Rectangle r = new Rectangle(4,8);
+    System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.area());
   }
-
 
   public static void hello(String somewhat) {
-
     System.out.println("Hello, " + somewhat + "!");
-
-  }
-
-
-  public static double area(double len) {
-    return len*len;
-  }
-
-  public static double area(double a, double b) {
-    return a*b;
   }
 }
