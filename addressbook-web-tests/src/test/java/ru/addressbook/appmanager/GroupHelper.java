@@ -24,7 +24,7 @@ public class GroupHelper extends BaseHelper {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
-  public void initGroupCreationg() {
+  public void initGroupCreation() {
     click(By.name("new"));
   }
 
@@ -34,5 +34,13 @@ public class GroupHelper extends BaseHelper {
 
   public void selectGroup() {
     click(By.name("selected[]"));
+  }
+
+  public void initGroupModification() {
+    click(By.name("edit"));
+  }
+
+  public void submitGroupModification() {
+    click(By.name("update"));
   }
 }
