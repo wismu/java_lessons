@@ -25,7 +25,7 @@ public class ContactCreationTest {
     wd.findElement(By.name("user")).sendKeys(username);
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys(password);
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[2]")).click();
+    wd.findElement(By.xpath("(//input[@value='Login'])")).click();
   }
 
   @Test
@@ -39,15 +39,15 @@ public class ContactCreationTest {
 
   private void fillBirthdayDataForm(ContactBirthday contactBirthday) {
     new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactBirthday.getDay());
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[12]")).click();
+    wd.findElement(By.xpath("(//option[@value='10'])")).click();
     wd.findElement(By.name("bmonth")).click();
     new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(contactBirthday.getMonth());
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[36]")).click();
+    wd.findElement(By.xpath("(//option[@value='February'])")).click();
     wd.findElement(By.name("byear")).click();
     wd.findElement(By.name("byear")).clear();
     wd.findElement(By.name("byear")).sendKeys(contactBirthday.getYear());
     wd.findElement(By.name("theform")).click();
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
+    wd.findElement(By.xpath("(//input[21])")).click();
   }
 
   private void fillContactForm(ContactData contactData) {
