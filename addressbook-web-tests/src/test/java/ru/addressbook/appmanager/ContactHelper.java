@@ -2,17 +2,14 @@ package ru.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 import ru.addressbook.model.ContactBirthday;
 import ru.addressbook.model.ContactData;
 
-public class ContactHelper {
-
-    protected WebDriver wd;
+public class ContactHelper  extends BaseHelper{
 
     public ContactHelper(WebDriver wd) {
-        this.wd = wd;
-            }
+        super(wd);
+    }
 
     public void fillBirthdayDataForm(ContactBirthday contactBirthday) {
         bday(contactBirthday);
@@ -22,24 +19,20 @@ public class ContactHelper {
     }
 
     private void confirm() {
-        wd.findElement(By.xpath("(//input[21])")).click();
+        click(By.xpath("(//input[21])"));
     }
 
     private void bmonth(ContactBirthday contactBirthday) {
-        new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(contactBirthday.getMonth());
-        wd.findElement(By.xpath("(//option[@value='February'])")).click();
+        click(By.xpath("(//option[@value='February'])"));
     }
 
     private void byear(ContactBirthday contactBirthday, By year) {
-        wd.findElement(year).click();
-        wd.findElement(year).clear();
-        wd.findElement(year).sendKeys(contactBirthday.getYear());
+        type(year, contactBirthday.getYear());
     }
 
     private void bday(ContactBirthday contactBirthday) {
-        new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactBirthday.getDay());
-        wd.findElement(By.xpath("(//option[@value='10'])")).click();
-        wd.findElement(By.name("bmonth")).click();
+        click(By.xpath("(//option[@value='10'])"));
+        click(By.name("bmonth"));
     }
 
     public void fillContactForm(ContactData contactData) {
@@ -54,56 +47,42 @@ public class ContactHelper {
     }
 
     private void birthday() {
-        wd.findElement(By.name("bday")).click();
+        click(By.name("bday"));
     }
 
     private void email(ContactData contactData) {
-        wd.findElement(By.name("email")).click();
-        wd.findElement(By.name("email")).clear();
-        wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
+        type(By.name("email"), contactData.getEmail());
     }
 
     private void mobile(ContactData contactData) {
-        wd.findElement(By.name("mobile")).click();
-        wd.findElement(By.name("mobile")).clear();
-        wd.findElement(By.name("mobile")).sendKeys(contactData.getPhone());
+        type(By.name("mobile"), contactData.getPhone());
     }
 
     private void address(ContactData contactData) {
-        wd.findElement(By.name("address")).click();
-        wd.findElement(By.name("address")).clear();
-        wd.findElement(By.name("address")).sendKeys(contactData.getAddress());
+        type(By.name("address"), contactData.getAddress());
     }
 
     private void nickname(ContactData contactData) {
-        wd.findElement(By.name("nickname")).click();
-        wd.findElement(By.name("nickname")).clear();
-        wd.findElement(By.name("nickname")).sendKeys(contactData.getNickname());
+        type(By.name("nickname"), contactData.getNickname());
     }
 
     private void lastname(ContactData contactData) {
-        wd.findElement(By.name("lastname")).click();
-        wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
+        type(By.name("lastname"), contactData.getLastname());
     }
 
     private void middlename(ContactData contactData) {
-        wd.findElement(By.name("middlename")).click();
-        wd.findElement(By.name("middlename")).clear();
-        wd.findElement(By.name("middlename")).sendKeys(contactData.getMiddlename());
+        type(By.name("middlename"), contactData.getMiddlename());
     }
 
     private void firstname(ContactData contactData) {
-        wd.findElement(By.name("firstname")).click();
-        wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
+        type(By.name("firstname"), contactData.getFirstname());
     }
 
     public void initNewContact() {
-      wd.findElement(By.linkText("add new")).click();
+        click(By.linkText("add new"));
     }
 
     public void gotoHomePage() {
-      wd.findElement(By.linkText("home page")).click();
+        click(By.linkText("home page"));
     }
 }

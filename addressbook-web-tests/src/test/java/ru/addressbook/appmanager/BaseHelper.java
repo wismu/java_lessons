@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class BaseHelper {
   protected WebDriver wd;
 
+
   public BaseHelper(WebDriver wd) {
     this.wd = wd;
   }
@@ -29,4 +30,5 @@ public class BaseHelper {
       return false;
     }
   }
+
 }
