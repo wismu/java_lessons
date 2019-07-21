@@ -83,6 +83,19 @@ public class ContactHelper  extends BaseHelper{
     }
 
     public void gotoHomePage() {
-        click(By.linkText("home page"));
+        click(By.linkText("home"));
+    }
+
+    public void initContactModification() {
+        click(By.xpath("//tbody/tr[2]//*[@alt='Edit']"));
+    }
+
+    public void updateContact() {
+        click(By.xpath("//input[22]"));
+    }
+
+    public void deleteContact() {
+
+        click(By.xpath("//form[2]/input[2]"));
     }
 }
