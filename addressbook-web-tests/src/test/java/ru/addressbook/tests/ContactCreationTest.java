@@ -12,8 +12,6 @@ public class ContactCreationTest extends TestBase{
     app.getContactHelper().fillContactForm(new ContactData("Igor", "Andreevich", "Mashkov", "markitu", "Moscow, Kremlin, 3", "+79250000000", "admin@mail.ru"));
     app.getContactHelper().fillBirthdayDataForm(new ContactBirthday("10", "February", "1990"));
     app.getContactHelper().gotoHomePage();
-
-
   }
 
 }
