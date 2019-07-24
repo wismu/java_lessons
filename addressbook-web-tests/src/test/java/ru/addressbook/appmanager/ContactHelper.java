@@ -1,11 +1,14 @@
 package ru.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.addressbook.model.ContactBirthday;
 import ru.addressbook.model.ContactData;
 
-public class ContactHelper  extends BaseHelper{
+public class ContactHelper  extends BaseHelper {
 
     public ContactHelper(WebDriver wd) {
         super(wd);
@@ -31,11 +34,11 @@ public class ContactHelper  extends BaseHelper{
     }
 
     private void bday(ContactBirthday contactBirthday) {
-        click(By.xpath("(//option[@value='10'])"));
+        click(By.xpath("(//option[@value='11'])"));
         click(By.name("bmonth"));
     }
 
-    public void fillContactForm(ContactData contactData) {
+    public void fillContactForm(ContactData contactData, boolean creation) {
         firstname(contactData);
         middlename(contactData);
         lastname(contactData);
@@ -44,7 +47,15 @@ public class ContactHelper  extends BaseHelper{
         mobile(contactData);
         email(contactData);
         birthday();
+
+        if (creation) {
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        } else {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
+
     }
+
 
     private void birthday() {
         click(By.name("bday"));
