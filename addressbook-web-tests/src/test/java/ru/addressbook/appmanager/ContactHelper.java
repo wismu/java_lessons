@@ -34,7 +34,7 @@ public class ContactHelper  extends BaseHelper {
     }
 
     private void bday(ContactBirthday contactBirthday) {
-        click(By.xpath("(//option[@value='11'])"));
+        click(By.xpath("(//option[@value='10'])"));
         click(By.name("bmonth"));
     }
 
