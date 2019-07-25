@@ -109,4 +109,15 @@ public class ContactHelper  extends BaseHelper {
 
         click(By.xpath("//form[2]/input[2]"));
     }
+
+    public void createContact(ContactData contact, boolean b) {
+        initNewContact();
+        fillContactForm(new ContactData("Igor", "Andreevich", "Mashkov", "markitu", "Moscow, Kremlin, 3", "+79250000000", "admin@mail.ru", "Igor group"), true);
+        fillBirthdayDataForm(new ContactBirthday("11", "February", "1990"));
+        gotoHomePage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.xpath("//tbody/tr[2]//*[@alt='Edit']"));
+    }
 }
